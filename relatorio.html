@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relatório - meyre_lanches</title>
+  <title>Meyre Lanches - Relatório</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {background:linear-gradient(135deg,#006400,#32CD32);color:white;min-height:100vh}
-    .card{background:rgba(255,255,255,0.95);color:#333;border-radius:15px}
+    body { background: linear-gradient(135deg, #006400 0%, #32CD32 100%); color: white; min-height: 100vh; }
+    .card { background: rgba(255,255,255,0.95); color: #333; border-radius: 18px; }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg fixed-top bg-white shadow">
     <div class="container-fluid">
-      <a class="navbar-brand text-success" href="index.html">Lanchonete do Gilmar</a>
+      <a class="navbar-brand text-success fs-4" href="index.html">Meyre Lanches</a>
       <ul class="navbar-nav ms-auto">
         <li><a class="nav-link" href="index.html">Caixa</a></li>
         <li><a class="nav-link" href="estoque.html">Compras</a></li>
@@ -24,41 +24,35 @@
   </nav>
 
   <div class="container my-5 pt-5">
-    <h2 class="text-center text-white mb-4">Relatório Completo</h2>
+    <h2 class="text-center mb-4">Relatório Completo - Meyre Lanches</h2>
     <div class="card p-4">
-      <h3 class="text-success">Resumo do Caixa</h3>
-      <div id="resumo" class="fs-5"></div>
+      <h3>Resumo do Dia</h3>
+      <div id="resumo" class="fs-4"></div>
       <hr>
-      <h3 class="text-success">Produtos Cadastrados (Preço de Venda = Custo + 30%)</h3>
+      <h3>Produtos e Preços de Venda</h3>
       <div id="produtos"></div>
     </div>
   </div>
 
   <script>
-    const caixa = JSON.parse(localStorage.getItem('caixaLanchonete') || '{"saldo":0,"vendas":0,"lucro":0}');
-    const estoque = JSON.parse(localStorage.getItem('estoqueLanchonete') || '[]');
+    const caixa = JSON.parse(localStorage.getItem('caixaMeyre') || '{"saldo":0,"vendas":0,"lucro":0}');
+    const estoque = JSON.parse(localStorage.getItem('estoqueMeyre') || '[]');
 
     document.getElementById('resumo').innerHTML = `
-      <p><strong>Saldo em Caixa:</strong> R$ ${caixa.saldo.toFixed(2).replace('.',',')}</p>
-      <p><strong>Total de Vendas:</strong> R$ ${caixa.vendas.toFixed(2).replace('.',',')}</p>
-      <p class="text-success fs-4"><strong>Lucro Total (30%):</strong> R$ ${caixa.lucro.toFixed(2).replace('.',',')}</p>
+      <p><strong>Saldo Atual:</strong> R$ ${caixa.saldo.toFixed(2).replace('.',',')}</p>
+      <p><strong>Total Vendido:</strong> R$ ${caixa.vendas.toFixed(2).replace('.',',')}</p>
+      <p class="text-success fw-bold"><strong>LUCRO DO DIA:</strong> R$ ${caixa.lucro.toFixed(2).replace('.',',')}</p>
     `;
 
     const lista = document.getElementById('produtos');
-    if (estoque.length === 0) {
-      lista.innerHTML = '<p class="text-muted">Nenhum produto cadastrado ainda.</p>';
-    } else {
-      estoque.forEach(p => {
-        const precoVenda = p.custo * 1.3;
-        const lucroUnit = precoVenda - p.custo;
-        lista.innerHTML += `<div class="border-bottom py-3">
-          <strong>${p.nome}</strong><br>
-          Custo: R$ ${p.custo.toFixed(2)} → Venda: R$ ${precoVenda.toFixed(2)} 
-          <span class="text-success">(Lucro unitário: R$ ${lucroUnit.toFixed(2)})</span>
-        </div>`;
-      });
-    }
+    if (estoque.length === 0) lista.innerHTML = '<p>Nenhum produto cadastrado.</p>';
+    estoque.forEach(p => {
+      const venda = p.custo * 1.3;
+      lista.innerHTML += `<div class="border-bottom py-3">
+        <strong>${p.nome}</strong> → Custo: R$ ${p.custo.toFixed(2)} → <span class="text-success">Venda: R$ ${venda.toFixed(2)}</span>
+        <small class="text-muted"> (Lucro: R$ ${(venda - p.custo).toFixed(2)})</small>
+      </div>`;
+    });
   </script>
 </body>
 </html>
-
