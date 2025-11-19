@@ -7,85 +7,50 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #006400 0%, #32CD32 100%); color: #fff; min-height: 100vh; margin:0; display:flex; flex-direction:column; }
-    .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-    .navbar-brand { color: #006400 !important; font-weight: 800; font-size: 1.6rem; }
-    .nav-link { color: #006400 !important; font-weight: 600; padding: 12px 20px !important; border-radius: 8px; }
-    .nav-link:hover, .nav-link.active { background: #228B22; color: white !important; }
-    .card { border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-    .btn-success { background: #228B22; border: none; font-weight: bold; }
-    .qrcode { max-width: 200px; border: 10px solid white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-    footer { background: rgba(0,0,0,0.6); padding: 20px; text-align: center; margin-top: auto; }
+    body {font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#006400 0%,#32CD32 100%);color:#fff;min-height:100vh;margin:0;display:flex;flex-direction:column}
+    .navbar{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+    .navbar-brand,.nav-link{color:#006400 !important;font-weight:800}
+    .nav-link:hover,.nav-link.active{background:#228B22;color:white !important;border-radius:8px}
+    .card{border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+    .btn-success{background:#228B22;border:none;font-weight:bold}
+    .qrcode{max-width:220px;border:12px solid white;border-radius:18px;box-shadow:0 8px 25px rgba(0,0,0,0.4)}
+    footer{background:rgba(0,0,0,0.6);padding:20px;text-align:center;margin-top:auto}
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <i class="fas fa-hamburger text-warning"></i> Meyre Lanches
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand fs-3" href="index.html">Meyre Lanches</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-cash-register"></i> Caixa</a></li>
-          <li class="nav-item"><a class="nav-link" href="estoque.html"><i class="fas fa-box"></i> Produtos</a></li>
-          <li class="nav-item"><a class="nav-link" href="banco.html"><i class="fas fa-database"></i> Banco de Dados</a></li>
-          <li class="nav-item"><a class="nav-link" href="relatorio.html"><i class="fas fa-chart-bar"></i> Relatório</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Caixa</a></li>
+          <li class="nav-item"><a class="nav-link" href="estoque.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="banco.html">Banco de Dados</a></li>
+          <li class="nav-item"><a class="nav-link" href="relatorio.html">Relatório</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <div class="container my-5 pt-5 flex-grow-1">
-    <h2 class="text-center mb-5 text-shadow">Caixa do Dia - <span id="hoje"></span></h2>
+    <h2 class="text-center mb-5">Caixa do Dia - <span id="hoje"></span></h2>
 
     <div class="row g-4 text-dark">
-      <div class="col-md-3">
-        <div class="card bg-white text-success text-center p-4">
-          <h5>Saldo</h5>
-          <h3 id="saldo">R$ 0,00</h3>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card bg-white text-primary text-center p-4">
-          <h5>Vendas</h5>
-          <h3 id="vendasHoje">R$ 0,00</h3>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card bg-white text-warning text-center p-4">
-          <h5>Lucro</h5>
-          <h3 id="lucroHoje">R$ 0,00</h3>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card bg-white text-danger text-center p-4">
-          <h5>Itens Vendidos</h5>
-          <h3 id="itensVendidos">0</h3>
-        </div>
-      </div>
+      <div class="col-md-3"><div class="card bg-white text-success text-center p-4"><h5>Saldo</h5><h3 id="saldo">R$ 0,00</h3></div></div>
+      <div class="col-md-3"><div class="card bg-white text-primary text-center p-4"><h5>Vendas</h5><h3 id="vendasHoje">R$ 0,00</h3></div></div>
+      <div class="col-md-3"><div class="card bg-white text-warning text-center p-4"><h5>Lucro</h5><h3 id="lucroHoje">R$ 0,00</h3></div></div>
+      <div class="col-md-3"><div class="card bg-white text-info text-center p-4"><h5>Itens</h5><h3 id="itensVendidos">0</h3></div></div>
     </div>
 
     <div class="card mt-5 bg-white text-dark">
-      <div class="card-header bg-success text-white text-center">
-        <h4>Venda Rápida - 30% Lucro Automático</h4>
-      </div>
+      <div class="card-header bg-success text-white text-center"><h4>Venda Rápida</h4></div>
       <div class="card-body">
         <div class="row g-3 align-items-end">
-          <div class="col-md-5">
-            <select class="form-select form-select-lg" id="produtoSelect" onchange="calcularPreco()"></select>
-          </div>
-          <div class="col-md-2">
-            <input type="text" class="form-control" id="precoVenda" readonly placeholder="Preço">
-          </div>
-          <div class="col-md-2">
-            <input type="number" class="form-control" id="qtd" value="1" min="1">
-          </div>
-          <div class="col-md-3">
-            <button class="btn btn-success btn-lg w-100" onclick="abrirPagamento()">Vender</button>
-          </div>
+          <div class="col-md-6"><select class="form-select form-select-lg" id="produtoSelect" onchange="calc()"></select></div>
+          <div class="col-md-2"><input type="text" class="form-control text-success fw-bold" id="precoVenda" readonly></div>
+          <div class="col-md-2"><input type="number" class="form-control" id="qtd" value="1" min="1"></div>
+          <div class="col-md-2"><button class="btn btn-success btn-lg w-100" onclick="vender()">Vender</button></div>
         </div>
       </div>
     </div>
@@ -95,123 +60,91 @@
         <h5>Vendas do Dia</h5>
         <button class="btn btn-light btn-sm" onclick="exportExcel()">Excel</button>
       </div>
-      <div class="card-body" id="listaMov"></div>
+      <div class="card-body" id="lista"></div>
     </div>
   </div>
 
-  <!-- Modal Pix -->
   <div class="modal fade" id="modalPix">
     <div class="modal-dialog modal-sm">
       <div class="modal-content text-center">
-        <div class="modal-header bg-success text-white">
-          <h5>Meyre Lanches - Pagamento</h5>
-        </div>
+        <div class="modal-header bg-success text-white"><h5>Pagamento - Meyre Lanches</h5></div>
         <div class="modal-body">
-          <h3 id="valorModal">R$ 0,00</h3>
-          <p id="produtoModal"></p>
-          <img src="https://i.ibb.co.com/0jR7z3K/pix-meyre-lanches.jpg" alt="Pix Meyre Lanches" class="qrcode img-fluid">
+          <h3 id="totalModal">R$ 0,00</h3>
+          <p id="descModal"></p>
+          <img src="pix-meyre-lanches.jpg" alt="Pix" class="qrcode img-fluid">
           <p class="mt-3"><strong>Pix: (00) 00000-0000</strong></p>
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" onclick="pagarDinheiro()">Dinheiro</button>
-          <button class="btn btn-success" onclick="confirmarPix()">Confirmar Pix</button>
+        <div class="modal-footer justify-content-center">
+          <button class="btn btn-secondary" onclick="pagar('Dinheiro')">Dinheiro</button>
+          <button class="btn btn-success" onclick="pagar('Pix')">Confirmar Pix</button>
         </div>
       </div>
     </div>
   </div>
 
-  <footer>
-    <p>© 2025 Meyre Lanches • Sistema feito com carinho por Gilmar & Grok</p>
-  </footer>
+  <footer><p>© 2025 Meyre Lanches • Feito com carinho por Gilmar & Grok</p></footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script>
-    const hoje = new Date().toLocaleDateString('pt-BR');
-    document.getElementById('hoje').textContent = hoje;
-    let vendaAtual = {};
+    const hoje = new Date().toLocaleDateString('pt-BR'); document.getElementById('hoje').textContent = hoje;
+    let venda = {};
+    if(!localStorage.getItem('caixaMeyre')) localStorage.setItem('caixaMeyre', JSON.stringify({movimentos:[],saldo:0,vendas:0,lucro:0,itens:0}));
 
-    if (!localStorage.getItem('caixaMeyre')) localStorage.setItem('caixaMeyre', JSON.stringify({movimentos: [], saldo: 0, vendas: 0, lucro: 0, itens: 0}));
-    if (!localStorage.getItem('estoqueMeyre')) localStorage.setItem('estoqueMeyre', JSON.stringify([]));
-
-    function carregarProdutos() {
-      const estoque = JSON.parse(localStorage.getItem('estoqueMeyre'));
-      const select = document.getElementById('produtoSelect');
-      select.innerHTML = '<option value="">Selecione um produto</option>';
-      estoque.forEach(p => {
+    function loadProdutos(){
+      const estoque = JSON.parse(localStorage.getItem('estoqueMeyre')||'[]');
+      const sel = document.getElementById('produtoSelect');
+      sel.innerHTML = '<option value="">Selecione o produto</option>';
+      estoque.forEach(p=>{
+        const custoFinal = p.custo*(1-p.desconto/100);
+        const venda = custoFinal*(1+p.lucro/100);
         const opt = document.createElement('option');
-        opt.value = p.id;
-        opt.textContent = `${p.nome} - R$ ${(p.venda).toFixed(2).replace('.',',')}`;
-        opt.dataset.preco = p.venda;
-        select.appendChild(opt);
+        opt.value = JSON.stringify({id:p.id||estoque.indexOf(p),custoFinal,venda,lucro:p.lucro,nome:p.nome});
+        opt.textContent = `${p.nome} - R$ ${venda.toFixed(2)}`;
+        sel.appendChild(opt);
       });
     }
-
-    function calcularPreco() {
-      const select = document.getElementById('produtoSelect');
-      const preco = select.selectedOptions[0]?.dataset.preco || 0;
-      document.getElementById('precoVenda').value = preco > 0 ? 'R$ ' + parseFloat(preco).toFixed(2).replace('.',',') : '';
+    function calc(){
+      const sel = document.getElementById('produtoSelect');
+      if(sel.value){
+        const p = JSON.parse(sel.value);
+        document.getElementById('precoVenda').value = 'R$ '+p.venda.toFixed(2);
+      }
     }
-
-    function abrirPagamento() {
-      const select = document.getElementById('produtoSelect');
-      const id = select.value;
-      const nome = select.selectedOptions[0].textContent.split(' - ')[0];
-      const qtd = parseInt(document.getElementById('qtd').value) || 1;
-      const preco = parseFloat(select.selectedOptions[0]?.dataset.preco || 0);
-      if (!id) return alert('Selecione um produto!');
-
-      const total = preco * qtd;
-      vendaAtual = { id, nome, qtd, preco, total };
-      document.getElementById('valorModal').textContent = 'R$ ' + total.toFixed(2).replace('.',',');
-      document.getElementById('produtoModal').textContent = `${nome} × ${qtd}`;
+    function vender(){
+      const sel = document.getElementById('produtoSelect');
+      if(!sel.value) return alert('Escolha um produto!');
+      const p = JSON.parse(sel.value);
+      const qtd = parseInt(document.getElementById('qtd').value)||1;
+      venda = {nome:p.nome, qtd, total:p.venda*qtd, lucroUnit:(p.venda-p.custoFinal)};
+      document.getElementById('totalModal').textContent = 'R$ '+(p.venda*qtd).toFixed(2);
+      document.getElementById('descModal').textContent = `${p.nome} × ${qtd}`;
       new bootstrap.Modal(document.getElementById('modalPix')).show();
     }
-
-    function confirmarPix() { registrarVenda('Pix'); }
-    function pagarDinheiro() { if (confirm('Pago em dinheiro?')) registrarVenda('Dinheiro'); }
-
-    function registrarVenda(tipo) {
-      const { nome, qtd, total, preco } = vendaAtual;
-      const estoque = JSON.parse(localStorage.getItem('estoqueMeyre'));
-      const produto = estoque.find(p => p.id === vendaAtual.id);
-      const lucro = (preco - produto.custo) * qtd;
-
+    function pagar(tipo){
       const caixa = JSON.parse(localStorage.getItem('caixaMeyre'));
-      caixa.movimentos.push({desc: `${nome} × ${qtd} (${tipo})`, valor: total, data: hoje});
-      caixa.saldo += total; caixa.vendas += total; caixa.lucro += lucro; caixa.itens += qtd;
+      caixa.movimentos.push({desc:`${venda.nome} × ${venda.qtd} (${tipo})`,valor:venda.total,data:hoje});
+      caixa.saldo += venda.total; caixa.vendas += venda.total; caixa.lucro += venda.lucroUnit*venda.qtd; caixa.itens += venda.qtd;
       localStorage.setItem('caixaMeyre', JSON.stringify(caixa));
-
       bootstrap.Modal.getInstance(document.getElementById('modalPix')).hide();
-      document.getElementById('qtd').value = 1;
-      document.getElementById('produtoSelect').selectedIndex = 0;
-      calcularPreco();
-      atualizarCaixa();
+      document.getElementById('qtd').value=1; sel.selectedIndex=0; calc(); atualizar();
     }
-
-    function atualizarCaixa() {
-      const caixa = JSON.parse(localStorage.getItem('caixaMeyre'));
-      document.getElementById('saldo').textContent = 'R$ ' + caixa.saldo.toFixed(2).replace('.',',');
-      document.getElementById('vendasHoje').textContent = 'R$ ' + caixa.vendas.toFixed(2).replace('.',',');
-      document.getElementById('lucroHoje').textContent = 'R$ ' + caixa.lucro.toFixed(2).replace('.',',');
-      document.getElementById('itensVendidos').textContent = caixa.itens;
-
-      const lista = document.getElementById('listaMov');
-      lista.innerHTML = '';
-      caixa.movimentos.forEach(m => {
-        lista.innerHTML += `<div class="d-flex justify-content-between py-2 border-bottom"><span>${m.desc}</span><span class="text-success fw-bold">+ R$ ${m.valor.toFixed(2).replace('.',',')}</span></div>`;
-      });
+    function atualizar(){
+      const c = JSON.parse(localStorage.getItem('caixaMeyre'));
+      document.getElementById('saldo').textContent = 'R$ '+c.saldo.toFixed(2).replace('.',',');
+      document.getElementById('vendasHoje').textContent = 'R$ '+c.vendas.toFixed(2).replace('.',',');
+      document.getElementById('lucroHoje').textContent = 'R$ '+c.lucro.toFixed(2).replace('.',',');
+      document.getElementById('itensVendidos').textContent = c.itens;
+      const lista = document.getElementById('lista'); lista.innerHTML='';
+      c.movimentos.forEach(m=>lista.innerHTML+=`<div class="d-flex justify-content-between py-2 border-bottom"><span>${m.desc}</span><span class="text-success fw-bold">+ R$ ${m.valor.toFixed(2).replace('.',',')}</span></div>`);
     }
-
-    function exportExcel() {
-      const caixa = JSON.parse(localStorage.getItem('caixaMeyre'));
-      const ws = XLSX.utils.json_to_sheet(caixa.movimentos.map(m => ({Data: m.data, Descrição: m.desc, Valor: m.valor})));
-      const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Vendas");
-      XLSX.writeFile(wb, `Meyre_Lanches_${hoje.replace(/\//g,'-')}.xlsx`);
+    function exportExcel(){
+      const c = JSON.parse(localStorage.getItem('caixaMeyre'));
+      const ws = XLSX.utils.json_to_sheet(c.movimentos.map(m=>({Data:m.data,Descrição:m.desc,Valor:m.valor})));
+      const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,"Vendas");
+      XLSX.writeFile(wb,`Meyre_Lanches_${hoje.replace(/\//g,'-')}.xlsx`);
     }
-
-    carregarProdutos();
-    atualizarCaixa();
+    loadProdutos(); atualizar();
   </script>
 </body>
 </html>
